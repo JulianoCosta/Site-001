@@ -10,5 +10,5 @@ package site001.model;
  * @author Robson
  */
 public class NovoModel {
-    
+    private String atributoRobsin;
 }
