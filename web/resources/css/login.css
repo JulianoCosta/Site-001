@@ -1,0 +1,14 @@
+.login{
+    margin: 100px auto;
+    float: none;
+    width: 400px;
+}
+
+#btn_enviar{
+   margin-left: 130px;
+   margin-bottom: 10px;
+}
+
+#link_cadastrar{
+    margin-left: 158px;
+}

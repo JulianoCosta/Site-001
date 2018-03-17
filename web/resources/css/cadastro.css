@@ -1,0 +1,18 @@
+.cadastro{
+    width: 500px;
+    margin: 100px auto;
+}
+
+.btn_ok_cancel{
+    width: 500px;
+    margin: 0 auto;
+}
+
+#btn_ok{
+    margin-left: 140px;
+}
+
+
+#btn_cancelar{
+    margin-left: 45px;
+}
