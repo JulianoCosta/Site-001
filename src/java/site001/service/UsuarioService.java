@@ -16,7 +16,7 @@ public class UsuarioService implements BaseService<Usuario> {
     @Override
     public Usuario create(Usuario e) {
         try (Connection conn = ConnectionManager.getConnection()) {
-            //TODO gerar hash da senha aqui.
+            e.setSenha(Security.generateMd5(e.getSenha()));
             e = usuarioDao.create(conn, e);
         } catch (Exception ex) {
             ex.printStackTrace();
