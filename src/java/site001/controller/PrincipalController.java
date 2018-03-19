@@ -1,4 +1,3 @@
-
 package site001.controller;
 
 import org.springframework.stereotype.Controller;
@@ -11,11 +10,10 @@ import site001.model.Usuario;
 public class PrincipalController {
 
     @RequestMapping(value = "/principal", method = RequestMethod.POST)
-    public ModelAndView principal(Usuario usuario){
-     
+    public ModelAndView principal(Usuario usuario) {
         ModelAndView mv = new ModelAndView();
+        mv.addObject("usuario", usuario);
         mv.setViewName("principal");
-        
         return mv;
     }
 }
