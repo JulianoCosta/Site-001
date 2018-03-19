@@ -15,8 +15,8 @@ public class CadastroController {
     UsuarioService usuarioService;
 
     @RequestMapping("/cadastro")
-    public String cadastro() {
-        return "cadastro";
+    public ModelAndView cadastro() {
+        return new ModelAndView("cadastro");
     }
 
     @RequestMapping(value = "/cadastro", method = RequestMethod.POST)

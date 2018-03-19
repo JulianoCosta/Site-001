@@ -15,24 +15,24 @@
 
         <div class="row login">
 
-            <form class="col s12">
+            <form class="col s12" action="login" method="POST">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="text" class="validate">
-                        <label for="email">Usuário</label>
+                        <input name="login" id="usuario" type="text" class="validate" required="required">
+                        <label for="usuario">Usuário</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
+                        <input name="senha" id="password" type="password" class="validate" required="required">
                         <label for="password">Senha</label>
                     </div>
                 </div>
+                
+                <button id="btn_enviar" class="btn waves-effect waves-light" type="submit" name="action">Logar
+                    <i class="material-icons right">send</i>
+                </button>
             </form>
-
-            <button id="btn_enviar" class="btn waves-effect waves-light" type="submit" name="action">Logar
-                <i class="material-icons right">send</i>
-            </button>
             <br>
             <a id="link_cadastrar" href="cadastro">cadastrar - se</a>
         </div>
