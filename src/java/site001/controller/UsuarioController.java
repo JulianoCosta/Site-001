@@ -1,14 +1,11 @@
 package site001.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import site001.dao.criteria.UsuarioCriteria;
 import site001.model.Usuario;
 import site001.service.UsuarioService;
 
@@ -20,7 +17,7 @@ public class UsuarioController {
 
     @RequestMapping(value = "/usuario/cadastro", method = RequestMethod.GET)
     public ModelAndView create() {
-        return new ModelAndView("cadastro");
+        return new ModelAndView("formulario_usuario");
     }
 
     @RequestMapping(value = "/usuario/cadastro", method = RequestMethod.POST)
@@ -32,7 +29,32 @@ public class UsuarioController {
             mv.setViewName("login");
         } else {
             mv.addObject("sucesso_cadastro", false);
-            mv.setViewName("cadastro");
+            mv.setViewName("formulario_usuario");
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/usuario/edicao", method = RequestMethod.GET)
+    public ModelAndView update() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("formulario_usuario");
+        mv.addObject("edicao", true);
+        return mv;
+    }
+
+    @RequestMapping(value = "/usuario/edicao", method = RequestMethod.POST)
+    public ModelAndView update(Usuario usuario, HttpSession session) {
+        ModelAndView mv = new ModelAndView();
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+        usuario.setId(usuarioLogado.getId());
+        if (usuarioService.update(usuario)) {
+            mv.setViewName("redirect:/principal");
+            mv.addObject("sucesso_edicao", true);
+            session.setAttribute("usuarioLogado", usuario);
+        } else {
+            mv.setViewName("formulario_usuario");
+            mv.addObject("sucesso_edicao", false);
+            mv.addObject("edicao", true);
         }
         return mv;
     }
@@ -43,16 +65,23 @@ public class UsuarioController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView login(Usuario usuario) {
+    public ModelAndView login(Usuario usuario, HttpSession session) {
         usuario = usuarioService.login(usuario);
         ModelAndView mv = new ModelAndView();
         if (usuario.getId() != null) {
-            mv.addObject("usuario", usuario);
-            mv.setViewName("principal");
+            mv.setViewName("redirect:/principal");
+            session.setAttribute("usuarioLogado", usuario);
         } else {
-            mv.addObject("sucesso_login", false);
             mv.setViewName("login");
+            mv.addObject("usuario", usuario);
+            mv.addObject("sucesso_login", false);
         }
         return mv;
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public ModelAndView logout(HttpSession session) {
+        session.setAttribute("usuarioLogado", null);
+        return new ModelAndView("redirect:/login");
     }
 }

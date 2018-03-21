@@ -1,5 +1,5 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,27 +11,34 @@
     </head>
     <body>
 
-        <div class="row login">
-            <form class="col s12" action="<c:url value="/login"/>" method="POST">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input name="login" id="usuario" type="text" class="validate" required="required">
-                        <label for="usuario">Usuário</label>
+        <div class="row container">
+            <div class="col s12 m6 l6 center-align push-l3 push-m3">
+                <nav class="grey">
+                    <div class="nav-wrapper">
+                        <h5 class="brand-logo center">Login</h5>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input name="senha" id="password" type="password" class="validate" required="required">
-                        <label for="password">Senha</label>
+                </nav>
+                <form  action="<c:url value="/login"/>" method="POST">
+                    <div class="input-field">
+                        <i class="material-icons prefix">mood</i>
+                        <input name="login" id="login" type="text" class="validate" required="required" value="${usuario.getLogin()}">
+                        <label for="login">Usuário</label>
                     </div>
-                </div>
-
-                <button id="btn_enviar" class="btn waves-effect waves-light" type="submit">Logar
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
-            <br>
-            <a id="link_cadastrar" href="<c:url value="/usuario/cadastro"/>">cadastrar - se</a>
+                    <div class="input-field">
+                        <i class="material-icons prefix">keyboard</i>
+                        <input name="senha" id="senha" type="password" class="validate" required="required">
+                        <label for="senha">Senha</label>
+                    </div>
+                    <div>
+                        <button class="btn waves-effect green" type="submit">Logar
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <a href="<c:url value="/usuario/cadastro"/>" class="btn waves-effect green">
+                            <i class="material-icons">person_add</i>
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>" type="text/javascript"></script>
@@ -39,12 +46,10 @@
         <script src="<c:url value="/resources/js/mensagens.js"/>" type="text/javascript"></script>
 
         <c:if test="${sucesso_cadastro == true}">
-            <script>exibirMensagemDeSucessoCadastro();</script>
-            <%--<c:set var="sucesso_cadastro" value="${null}"/>--%>
+            <script>msgSucessoCadastroUsuario();</script>
         </c:if>
         <c:if test="${sucesso_login == false}">
-            <script>exibirMensagemDeErroLogin();</script>
-            <%--<c:set var="sucesso_login" value="${null}"/>--%>
+            <script>msgErroLogin();</script>
         </c:if>
     </body>
 

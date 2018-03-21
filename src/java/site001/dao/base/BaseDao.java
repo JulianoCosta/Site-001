@@ -9,6 +9,9 @@ public interface BaseDao<E, C> {
 
     public E create(Connection conn, E e) throws SQLException;
 
+    public E readById(Connection conn, Long id) throws SQLException;
+
     public List<E> readByCriteria(Connection conn, Map<C, Object> criteria, Integer offset, Integer limit) throws SQLException;
 
+    public boolean update(Connection conn, E e) throws SQLException;
 }
