@@ -14,4 +14,6 @@ public interface BaseDao<E, C> {
     public List<E> readByCriteria(Connection conn, Map<C, Object> criteria, Integer offset, Integer limit) throws SQLException;
 
     public boolean update(Connection conn, E e) throws SQLException;
+
+    public boolean delete(Connection conn, Long id) throws SQLException;
 }

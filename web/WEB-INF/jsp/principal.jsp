@@ -17,7 +17,7 @@
                     <a class="brand-logo left">${usuarioLogado.getNome()}</a>
                     <ul id="nav-mobile" class="right">
                         <li><a href="<c:url value="/usuario/edicao"/>"><i class="material-icons">edit</i></a></li>
-                        <li><a href="<c:url value="/usuario/exclusao"/>"><i class="material-icons">delete</i></a></li>
+                        <li><a href="#modal_exclusao_usuario" class="modal-trigger"><i class="material-icons">delete</i></a></li>
                         <li><a href="<c:url value="/logout"/>"><i class="material-icons">exit_to_app</i></a></li>
                     </ul>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="row">
                     <c:forEach items="${usuarioList}" var="e">
                         <div class="col s12 m6 l4">
-                        <div class="card green lighten-1 white-text">
+                            <div class="card green lighten-1 white-text">
                                 <div class="card-content">
                                     <h5 class="card-title truncate">${e.getNome()}</h5>
                                     <p class="truncate">${e.getEmail()}</p>
@@ -40,11 +40,26 @@
                     </c:forEach>
                 </div>
             </div>
+
+            <div id="modal_exclusao_usuario" class="modal">
+                <div class="modal-content">
+                    <h4>Deseja excluir sua conta mesmo?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="<c:url value="/usuario/exclusao"/>" class="modal-action modal-close waves-effect btn green">Sim</a>
+                    <a href="#!" class="modal-action modal-close waves-effect btn red">Não</a>
+                </div>
+            </div>
         </div>
 
         <script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>" type="text/javascript"></script>
         <script src="<c:url value="/resources/js/materialize.min.js"/>" type="text/javascript"></script>
         <script src="<c:url value="/resources/js/mensagens.js"/>" type="text/javascript"></script>
+        <script>
+            $(document).ready(function () {
+                $('.modal').modal();
+            });
+        </script>
 
         <c:if test="${sucesso_edicao == true}">
             <script>msgSucessoEdicaoUsuario();</script>

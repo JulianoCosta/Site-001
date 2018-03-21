@@ -1,22 +1,24 @@
 
 function msgSucessoCadastroUsuario() {
-    Materialize.toast('Cadastrado com sucesso !', 3000, 'rounded');
+    Materialize.toast('Você foi cadastrado !', 3000, 'rounded');
 }
 
 function msgErroCadastroUsuario() {
-    Materialize.toast('Erro ao cadastrar !', 3000, 'rounded');
+    Materialize.toast('Erro ao te cadastrar !', 3000, 'rounded');
 }
 
 function msgSucessoEdicaoUsuario() {
-    Materialize.toast('Cadastro atualizado !', 3000, 'rounded');
+    Materialize.toast('Seu cadastro foi atualizado !', 3000, 'rounded');
 }
 
 function msgErroEdicaoUsuario() {
-    Materialize.toast('Cadastro não atualizado !', 3000, 'rounded');
+    Materialize.toast('Erro ao atualizar seu cadastro !', 3000, 'rounded');
 }
 
 function msgErroLogin() {
-    Materialize.toast('Login e/ou Senha incorreto !', 3000, 'rounded');
+    Materialize.toast('Seu Login e/ou Senha está incorreto !', 3000, 'rounded');
 }
 
-
+function msgSucessoExclusaoUsuario() {
+    Materialize.toast('Sua conta foi excluída !', 3000, 'rounded');
+}

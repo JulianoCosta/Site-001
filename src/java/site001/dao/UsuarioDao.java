@@ -112,4 +112,17 @@ public class UsuarioDao implements BaseDao<Usuario, UsuarioCriteria> {
         }
         return retorno;
     }
+
+    @Override
+    public boolean delete(Connection conn, Long id) throws SQLException {
+        boolean resultado = false;
+        StringBuilder sql = new StringBuilder();
+        sql.append("DELETE FROM usuario WHERE id=?");
+        try (PreparedStatement ps = conn.prepareCall(sql.toString())) {
+            ps.setLong(1, id);
+            ps.execute();
+            resultado = true;
+        }
+        return resultado;
+    }
 }

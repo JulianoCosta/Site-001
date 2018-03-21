@@ -59,6 +59,20 @@ public class UsuarioController {
         return mv;
     }
 
+    @RequestMapping(value = "/usuario/exclusao", method = RequestMethod.GET)
+    public ModelAndView delete(HttpSession session) {
+        ModelAndView mv = new ModelAndView();
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+        if (usuarioService.delete(usuarioLogado.getId())) {
+            mv.setViewName("redirect:/logout");
+            mv.addObject("sucesso_exclusao", true);
+        } else {
+            mv.setViewName("principal");
+            mv.addObject("sucesso_exclusao", false);
+        }
+        return mv;
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login() {
         return new ModelAndView("login");

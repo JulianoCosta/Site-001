@@ -51,6 +51,9 @@
         <c:if test="${sucesso_login == false}">
             <script>msgErroLogin();</script>
         </c:if>
+        <c:if test="${sucesso_exclusao == true}">
+            <script>msgSucessoExclusaoUsuario();</script>
+        </c:if>
     </body>
 
 </html>

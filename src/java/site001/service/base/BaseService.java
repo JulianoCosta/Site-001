@@ -13,4 +13,5 @@ public interface BaseService<E, C> {
 
     public boolean update(E e);
 
+    public boolean delete(Long id);
 }
