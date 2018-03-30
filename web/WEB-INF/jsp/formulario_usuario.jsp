@@ -4,54 +4,65 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="<c:url value="/resources/css/materialize.min.css"/>" rel="stylesheet" type="text/css" media="screen,projection"/>
+        <link href="<c:url value="/resources/css/padroes_gerais.css"/>" rel="stylesheet" type="text/css"/>
         <link href="<c:url value="/resources/css/cadastro.css"/>" rel="stylesheet" type="text/css"/>
         <title>Cadastro</title>
     </head>
+
     <body>
-        <div class="row container">
-            <div class="col s12 m6 l6 center-align push-l3 push-m3">
-                <nav class="grey">
-                    <div class="nav-wrapper">
-                        <h5 class="brand-logo center">
-                            <c:if test="${edicao != true}">Cadastro</c:if>
-                            <c:if test="${edicao == true}">Edição</c:if>
-                            </h5>
+
+        <header>
+            <nav>
+                <div class="nav-wrapper container">
+                    <h5 class="brand-logo center">
+                        <c:if test="${edicao != true}">Cadastro</c:if>
+                        <c:if test="${edicao == true}">Edição</c:if>
+                        </h5>
+                    </div>
+                </nav>
+            </header>
+
+            <main>
+                <div class="row container">
+                    <div class="col s12 m6 l6 center-align push-l3 push-m3">
+                        <form id="formulario" action="<c:url value="/usuario/cadastro"/>" method="POST">
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input name="nome" id="nome" type="text" class="validate" required="required">
+                            <label for="nome">Nome</label>
                         </div>
-                    </nav>
-                    <form id="formulario" action="<c:url value="/usuario/cadastro"/>" method="POST">
-                    <div class="input-field">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input name="nome" id="nome" type="text" class="validate" required="required">
-                        <label for="nome">Nome</label>
-                    </div>
-                    <div class="input-field">
-                        <i class="material-icons prefix">mood</i>
-                        <input name="login" id="login" type="text" class="validate" required="required">
-                        <label for="login">Login</label>
-                    </div>
-                    <div class="input-field">
-                        <i class="material-icons prefix">mail</i>
-                        <input name="email" id="email" type="email" class="validate" required="required">
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="input-field">
-                        <i class="material-icons prefix">keyboard</i>
-                        <input name="senha" id="senha" type="password" class="validate" required="required">
-                        <label for="senha">Senha</label>
-                    </div>
-                    <div>
-                        <button type="submit" class="waves-effect waves-light btn green">
-                            <i class="material-icons">done</i>
-                        </button>
-                        <a id="btn_cancelar" href="<c:url value="/login"/>" class="waves-effect waves-light btn red">
-                            <i class="material-icons">clear</i>
-                        </a>
-                    </div>
-                </form>
+                        <div class="input-field">
+                            <i class="material-icons prefix">mood</i>
+                            <input name="login" id="login" type="text" class="validate" required="required">
+                            <label for="login">Login</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">mail</i>
+                            <input name="email" id="email" type="email" class="validate" required="required">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">keyboard</i>
+                            <input name="senha" id="senha" type="password" class="validate" required="required">
+                            <label for="senha">Senha</label>
+                        </div>
+                        <div>
+                            <button type="submit" class="waves-effect btn-large">
+                                <i class="material-icons">done</i>
+                            </button>
+                            <a id="btn_cancelar" href="<c:url value="/login"/>" class="waves-effect btn-large">
+                                <i class="material-icons">clear</i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </main>
+
+        <c:import url="rodape.jsp"/>
 
         <script src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>" type="text/javascript"></script>
         <script src="<c:url value="/resources/js/materialize.min.js"/>" type="text/javascript"></script>
